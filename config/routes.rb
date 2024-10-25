@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roasts
   resource :session
   resources :register, only: %i[ new create ]
   resources :passwords, param: :token

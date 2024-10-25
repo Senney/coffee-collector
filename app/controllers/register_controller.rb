@@ -5,7 +5,7 @@ class RegisterController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       start_new_session_for @user
-      redirect_to root_path, notice: "Registration successful."
+      redirect_to roasts_path, notice: "Registration successful."
     else
       render :new
     end
