@@ -3,45 +3,49 @@
   <h1 class="text-4xl font-bold mb-8">My Collection</h1>
 
   <div class="grid grid-cols-2 gap-8">
-      <!-- Now Grinding Section -->
-      <div class="bg-white p-6 shadow-lg rounded-lg">
-          <h2 class="text-2xl font-semibold mb-4">Now Grinding</h2>
-          <ul>
-              <li class="flex items-center mb-4">
-                  <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-                  <span>Monogram Bean</span>
-              </li>
-              <li class="flex items-center mb-4">
-                  <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-                  <span>Eight Ounce</span>
-              </li>
-              <li class="flex items-center">
-                  <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-                  <span>Foobar 22</span>
-              </li>
-          </ul>
-      </div>
+    <!-- Now Grinding Section -->
+    <div class="bg-white p-6 shadow-lg rounded-lg">
+      <h2 class="text-2xl font-semibold mb-4">Now Grinding</h2>
+      <ul>
+        <% if @roasts.empty? %>
+        <li class="flex items-center mb-4">
+            <span>Nothing on deck. Move beans from Resting to Grinding to begin.</span>
+        </li>
+        <% end %>
 
-      <!-- Resting Section -->
-      <div class="bg-white p-6 shadow-lg rounded-lg">
-          <div class="flex justify-between items-center mb-4">
-              <h2 class="text-2xl font-semibold">Resting</h2>
-              <button class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-xl">+</button>
-          </div>
-          <ul>
-              <li class="flex items-center mb-4">
-                  <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-                  <span>Monogram Bean</span>
-              </li>
-              <li class="flex items-center mb-4">
-                  <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-                  <span>Eight Ounce</span>
-              </li>
-              <li class="flex items-center">
-                  <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-                  <span>Foobar 22</span>
-              </li>
-          </ul>
+        <% @roasts.each do |roast| %>
+        <li class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
+          <span><%= roast.name %></span>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- Resting Section -->
+    <div class="bg-white p-6 shadow-lg rounded-lg">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold">Resting</h2>
+        <button
+          class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-xl"
+        >
+          +
+        </button>
       </div>
+      <ul>
+        <li class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
+          <span>Monogram Bean</span>
+        </li>
+        <li class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
+          <span>Eight Ounce</span>
+        </li>
+        <li class="flex items-center">
+          <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
+          <span>Foobar 22</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
