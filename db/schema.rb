@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_25_022139) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_26_042142) do
   create_table "roasts", force: :cascade do |t|
     t.string "name"
     t.string "origin"
@@ -20,6 +20,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_25_022139) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", null: false
+    t.datetime "status_changed_at", null: false
     t.index ["user_id"], name: "index_roasts_on_user_id"
   end
 
