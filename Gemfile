@@ -65,3 +65,5 @@ end
 gem "tailwindcss-rails", "~> 3.0"
 
 gem "ruby-openai"
+
+gem "dotenv", groups: [ :development, :test ]
