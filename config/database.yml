@@ -1,8 +1,16 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
+# PostgreSQL. Versions 9.3 and up are supported.
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
+# Install the pg driver:
+#   gem install pg
+# On macOS with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem "pg"
 #
 default: &default
   adapter: sqlite3
@@ -24,18 +32,24 @@ test:
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  primary:
-    <<: *default
-    database: storage/production.sqlite3
+  primary: &primary_production
+    adapter: postgresql
+    encoding: unicode
+    # For details on connection pooling, see Rails configuration guide
+    # https://guides.rubyonrails.org/configuring.html#database-pooling
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    database: coffee_collector_production
+    username: coffee_collector
+    password: <%= ENV["COFFEE_COLLECTOR_DATABASE_PASSWORD"] %>
   cache:
-    <<: *default
-    database: storage/production_cache.sqlite3
+    <<: *primary_production
+    database: coffee_collector_production_cache
     migrations_paths: db/cache_migrate
   queue:
-    <<: *default
-    database: storage/production_queue.sqlite3
+    <<: *primary_production
+    database: coffee_collector_production_queue
     migrations_paths: db/queue_migrate
   cable:
-    <<: *default
-    database: storage/production_cable.sqlite3
+    <<: *primary_production
+    database: coffee_collector_production_cable
     migrations_paths: db/cable_migrate
