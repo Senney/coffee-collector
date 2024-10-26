@@ -7,13 +7,13 @@
     <div class="bg-white p-6 shadow-lg rounded-lg">
       <h2 class="text-2xl font-semibold mb-4">Now Grinding</h2>
       <ul>
-        <% if @roasts.empty? %>
+        <% if @roasts_grinding.empty? %>
         <li class="flex items-center mb-4">
             <span>Nothing on deck. Move beans from Resting to Grinding to begin.</span>
         </li>
         <% end %>
 
-        <% @roasts.each do |roast| %>
+        <% @roasts_grinding.each do |roast| %>
         <li class="flex items-center mb-4">
           <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
           <span><%= roast.name %></span>
@@ -33,18 +33,18 @@
         </button>
       </div>
       <ul>
+        <% if @roasts_resting.empty? %>
+        <li class="flex items-center mb-4">
+            <span>Nothing on deck. Add some new beans?</span>
+        </li>
+        <% end %>
+
+        <% @roasts_resting.each do |roast| %>
         <li class="flex items-center mb-4">
           <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-          <span>Monogram Bean</span>
+          <span><%= roast.name %></span>
         </li>
-        <li class="flex items-center mb-4">
-          <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-          <span>Eight Ounce</span>
-        </li>
-        <li class="flex items-center">
-          <div class="w-12 h-12 bg-gray-200 rounded-md mr-4"></div>
-          <span>Foobar 22</span>
-        </li>
+        <% end %>
       </ul>
     </div>
   </div>

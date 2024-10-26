@@ -1,5 +1,6 @@
 class RoastsController < ApplicationController
   def index
-    @roasts = Current.user.roasts.all
+    @roasts_grinding = Current.user.roasts.grinding.all
+    @roasts_resting = Current.user.roasts.resting.all
   end
 end
