@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :roasts
+  resources :roasts do
+    get "/import", on: :collection, to: "roasts#import_form"
+    post "/import", on: :collection, to: "roasts#import"
+    get "/import/:job_id", to: "roasts#import_wait", on: :collection, as: :import_wait
+  end
 
   # Auth resources
   get "/login", to: "sessions#new", as: :new_session
