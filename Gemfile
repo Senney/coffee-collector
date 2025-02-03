@@ -62,7 +62,7 @@ group :test do
   gem "capybara"
 end
 
-gem "tailwindcss-rails", "~> 3.0"
+gem "tailwindcss-rails", "~> 4.0"
 
 gem "ruby-openai"
 
